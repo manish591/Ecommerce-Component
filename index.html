@@ -16,7 +16,7 @@
             <section class="items">
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__french-fries.png" alt="French Fries">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__french-fries.png" alt="French Fries">
                     </div>
                     <div class="description">
                         <p class="name">French Fries With Ketchup</p>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__salmon-vegetables.png" alt="Salmon vegies">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__salmon-vegetables.png" alt="Salmon vegies">
                     </div>
                     <div class="description">
                         <p class="name">Salmon and Vegetables</p>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__bacon-eggs.png" alt="Bacon Eggs">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__bacon-eggs.png" alt="Bacon Eggs">
                     </div>
                     <div class="description">
                         <p class="name">Bacon Eggs</p>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__chicken-salad.png" alt="Chicken Salad">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__chicken-salad.png" alt="Chicken Salad">
                     </div>
                     <div class="description">
                         <p class="name">Chicken Salad</p>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__fish-sticks-fries.png" alt="Fish sticks fries">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__fish-sticks-fries.png" alt="Fish sticks fries">
                     </div>
                     <div class="description">
                         <p class="name">Fish Sticks Fries</p>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__ravioli.png" alt="Ravioli">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__ravioli.png" alt="Ravioli">
                     </div>
                     <div class="description">
                         <p class="name">Ravioli</p>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__spaghetti-meat-sauce.png" alt="Spaghetti Meat Sauce">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__spaghetti-meat-sauce.png" alt="Spaghetti Meat Sauce">
                     </div>
                     <div class="description">
                         <p class="name">Spaghetti Meat Sauce</p>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="recipe">
                     <div class="image">
-                        <img src="/STARTER-FILES/images/plate__tortellini.png" alt="Tortellini">
+                        <img class="recipe-img" src="/STARTER-FILES/images/plate__tortellini.png" alt="Tortellini">
                     </div>
                     <div class="description">
                         <p class="name">Tortellini</p>
@@ -96,8 +96,38 @@
                 </div>
             </section>
         </div>
-        <div class="your-cart-container">
 
+        <div class="your-cart-container">
+            <div class="title">
+                <h1>Your Cart</h1>
+            </div>
+            <div class="empty-cart-message hide">
+                <p>Your Cart is Empty</p>
+            </div>
+            <section class="items">
+                <div class="cart-item">
+                    <div class="image">
+                        <img class="cart-recipe-img" src="/STARTER-FILES/images/plate__french-fries.png" alt="French Fries">
+                        <p class="recipe-count">2</p>
+                    </div>
+                    <div class="cart-description">
+                        <p class="name">French Fries With Ketchup</p>
+                        <p class="price">$4.50</p>
+                        <div class="select-area">
+                            <div class="select-quantity">
+                                <button class="decrease-price">
+                                    <img src="/STARTER-FILES/images/chevron.svg" alt="" class="minus">
+                                </button>
+                                <p class="quantity">2</p>
+                                <button class="increase-price">
+                                    <img src="/STARTER-FILES/images/chevron.svg" alt="" class="plus">
+                                </button>
+                            </div>
+                            <h2 class="updated-price">$4.50</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </body>
