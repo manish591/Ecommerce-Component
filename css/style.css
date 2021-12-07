@@ -104,11 +104,13 @@ body {
 
 .cart-item {
     display: flex;
+    margin-bottom: 5vh;
 }
 
 .select-area {
     display: flex;
     justify-content: space-between;
+    width: 170px;
 }
 
 .select-quantity {
@@ -152,4 +154,13 @@ body {
     width: 20px;
     height: 20px;
     text-align: center;
+}
+
+.in-cart-img {
+    width: 5px;
+    height: 5px;
+}
+
+.in-cart-description {
+    display: flex;
 }
