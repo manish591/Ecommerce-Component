@@ -164,3 +164,34 @@ body {
 .in-cart-description {
     display: flex;
 }
+
+.total-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    width: 260px;
+    border-top: 1px solid rgb(31, 30, 30);
+    display: none;
+}
+
+.total-cart-price-section {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.subtotal-section, .tax-section, .grand-total-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.category {
+    font-weight: 700;
+    font-size: .7rem;
+    margin-right: 1vh;
+}
+
+.grand-total {
+    color: var(--purple-clr)
+}

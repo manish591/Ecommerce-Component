@@ -21,6 +21,8 @@ function ready() {
 
 function addItmesToCart(e) {
     let button = e.target;
+    button.style.backgroundColor = 'black';
+    button.innerText = 'In Cart';
     let emptyCartMessage = document.querySelector('.empty-cart-message');
     emptyCartMessage.classList.add('hide');
     
