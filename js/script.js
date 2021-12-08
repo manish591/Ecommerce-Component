@@ -21,6 +21,8 @@ function ready() {
 
 function addItmesToCart(e) {
     let button = e.target;
+    let cartAmountContainer = document.querySelector('.total-container');
+    cartAmountContainer.style.display = 'block';
     button.style.backgroundColor = 'black';
     button.innerText = 'In Cart';
     let emptyCartMessage = document.querySelector('.empty-cart-message');
@@ -31,6 +33,7 @@ function addItmesToCart(e) {
     let price = element.querySelector('.price').innerText;
     let imageSrc = element.previousElementSibling.querySelector('.recipe-img').src;
     generateContent(title, price, imageSrc);
+    updateGrandTotal();
 }
 
 function generateContent(name, price, image) {
@@ -62,6 +65,7 @@ function increaseCartPrice(event) {
     let quantityToChange = parent.querySelector('.quantity');
     quantityToChange.innerText = Number(quantityToChange.innerText) + 1;
     totalPriceForCart.innerText = updateTotalPrice(price, quantityToChange.innerText);
+    updateGrandTotal();
 }
 
 function decreaseCartPrice(event) {
@@ -71,11 +75,29 @@ function decreaseCartPrice(event) {
     console.log(price);
     let quantityToChange = parent.querySelector('.quantity');
     quantityToChange.innerText = Number(quantityToChange.innerText) - 1;
+    updateGrandTotal();
 }
 
 function updateTotalPrice(price, quantity) {
     let currentTotal =  Number(price) * Number(quantity);
     return `$${(currentTotal).toFixed(2)}`;
+}
+
+function updateGrandTotal() {
+    let subtotal = document.querySelector('.subtotal');
+    let tax = document.querySelector('.tax');
+    let grandTotal = document.querySelector('.total');
+    let allCartItems = document.querySelectorAll('.cart-item');
+    let value = 0;
+    allCartItems.forEach(item => {
+        let price = item.querySelector('.price').innerText.replace('$', '');
+        let quantity = item.querySelector('.quantity').innerText;
+        value += Number(price) * Number(quantity);
+    })
+    let taxValue = value * 0.0975;
+    tax.innerText = `$${taxValue.toFixed(2)}`;
+    subtotal.innerText = `$${value.toFixed(2)}`;
+    grandTotal.innerText = `$${(value + taxValue).toFixed(2)}`
 }
 
 function generateHTML(name, price, image) {
