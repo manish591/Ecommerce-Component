@@ -28,40 +28,22 @@ function addItmesToCart(e) {
     let title = element.querySelector('.name').innerText;
     let price = element.querySelector('.price').innerText;
     let imageSrc = element.previousElementSibling.querySelector('.recipe-img').src;
-    generateHTML(title, price, imageSrc);
+    generateContent(title, price, imageSrc);
 }
 
-function generateHTML(name, price, image) {
+function generateContent(name, price, image) {
     let div = document.createElement('div');
     div.classList.add('cart-item');
     let yourCartContainer = document.querySelector('.your-cart-items-section');
     let allItemsNames = yourCartContainer.querySelectorAll('.name');
+
     for(let i = 0; i < allItemsNames.length; i++) {
         if(allItemsNames[i].innerText === name) {
             alert('Item is already added to the cart!');
             return;
         }
     }
-    let content =  `<div class="image">
-                      <img class="cart-recipe-img" src=${image} alt="French Fries">
-                      <p class="recipe-count">1</p>
-                    </div>
-                    <div class="cart-description">
-                        <p class="name">${name}</p>
-                        <p class="price">${price}</p>
-                        <div class="select-area">
-                            <div class="select-quantity">
-                                <button class="decrease-price update-price-value">
-                                    <img src="/STARTER-FILES/images/chevron.svg" alt="" class="minus">
-                                </button>
-                                <p class="quantity" data-id="1" data-value=${price}>1</p>
-                                <button class="increase-price update-price-value">
-                                    <img src="/STARTER-FILES/images/chevron.svg" alt="" class="plus">
-                                </button>
-                            </div>
-                            <h2 class="updated-price">${price}</h2>
-                        </div>
-                    </div>`;
+    let content = generateHTML(name, price, image);
     div.innerHTML = content;               
     yourCartContainer.appendChild(div);
     let increasePriceButton = div.querySelector('.increase-price');
@@ -92,4 +74,27 @@ function decreaseCartPrice(event) {
 function updateTotalPrice(price, quantity) {
     let currentTotal =  Number(price) * Number(quantity);
     return `$${(currentTotal).toFixed(2)}`;
+}
+
+function generateHTML(name, price, image) {
+    return `<div class="image">
+                <img class="cart-recipe-img" src=${image} alt="French Fries">
+                <p class="recipe-count">1</p>
+            </div>
+            <div class="cart-description">
+                <p class="name">${name}</p>
+                <p class="price">${price}</p>
+                <div class="select-area">
+                    <div class="select-quantity">
+                        <button class="decrease-price update-price-value">
+                            <img src="/STARTER-FILES/images/chevron.svg" alt="" class="minus">
+                        </button>
+                        <p class="quantity" data-id="1" data-value=${price}>1</p>
+                        <button class="increase-price update-price-value">
+                            <img src="/STARTER-FILES/images/chevron.svg" alt="" class="plus">
+                        </button>
+                    </div>
+                    <h2 class="updated-price">${price}</h2>
+                </div>
+            </div>`
 }
