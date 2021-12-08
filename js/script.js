@@ -51,30 +51,27 @@ function generateContent(name, price, image) {
     let content = generateHTML(name, price, image);
     div.innerHTML = content;               
     yourCartContainer.appendChild(div);
-    let increasePriceButton = div.querySelector('.increase-price');
-    let decreasePriceButton = div.querySelector('.decrease-price');
-    increasePriceButton.addEventListener('click', increaseCartPrice);
-    decreasePriceButton.addEventListener('click', decreaseCartPrice);           
+    let updatedPriceValueButton = div.querySelectorAll('.update-price-value');
+    updatedPriceValueButton.forEach(button => {
+        button.addEventListener('click', updateCartItemQuantity);
+    })          
 }
 
-function increaseCartPrice(event) {
+function updateCartItemQuantity(event) {
     let button = event.target;
     let parent = button.parentElement.parentElement;
+    let recipeCount = parent.parentElement.parentElement.parentElement.querySelector('.recipe-count');
     let price = parent.parentElement.parentElement.querySelector('.price').innerText.replace('$', '');
     let totalPriceForCart = parent.parentElement.querySelector('.updated-price');
     let quantityToChange = parent.querySelector('.quantity');
-    quantityToChange.innerText = Number(quantityToChange.innerText) + 1;
+    if(event.target.dataset.id === 'plus') {
+        quantityToChange.innerText = Number(quantityToChange.innerText) + 1;
+    } else {
+        if(Number(quantityToChange.innerText) <= 1) return;
+        quantityToChange.innerText = Number(quantityToChange.innerText) - 1;
+    }
     totalPriceForCart.innerText = updateTotalPrice(price, quantityToChange.innerText);
-    updateGrandTotal();
-}
-
-function decreaseCartPrice(event) {
-    let button = event.target;
-    let parent = button.parentElement.parentElement;
-    let price = parent.parentElement.parentElement;
-    console.log(price);
-    let quantityToChange = parent.querySelector('.quantity');
-    quantityToChange.innerText = Number(quantityToChange.innerText) - 1;
+    recipeCount.innerText = quantityToChange.innerText;
     updateGrandTotal();
 }
 
@@ -111,11 +108,11 @@ function generateHTML(name, price, image) {
                 <div class="select-area">
                     <div class="select-quantity">
                         <button class="decrease-price update-price-value">
-                            <img src="/STARTER-FILES/images/chevron.svg" alt="" class="minus">
+                            <img src="/STARTER-FILES/images/chevron.svg" alt="" class="minus" data-id="minus">
                         </button>
                         <p class="quantity" data-id="1" data-value=${price}>1</p>
-                        <button class="increase-price update-price-value">
-                            <img src="/STARTER-FILES/images/chevron.svg" alt="" class="plus">
+                        <button class="increase-price update-price-value" data-id="plus">
+                            <img src="/STARTER-FILES/images/chevron.svg" alt="" class="plus" data-id="plus">
                         </button>
                     </div>
                     <h2 class="updated-price">${price}</h2>
